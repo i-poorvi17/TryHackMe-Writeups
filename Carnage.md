@@ -3,28 +3,34 @@
 **Platform:** TryHackMe | **Category:** Network Traffic Analysis | **Tool:** Wireshark
 
 ## Overview
-The Challenge was about that there is a person Eric from a company Bartell Ltd who received an email from a known contact when he opened the doc he enabled content accidently and the SOC  department received an alert over it that Eric is making suspicious connections so the pcap was retrieved from the network and handed me for  analysis.
+An employee, Eric at Bartell Ltd, received an email from a known contact and accidentally enabled content when he opened the attached document. The SOC received an alert about suspicious connections from his machine. The packet capture was retrieved from the network and handed over for analysis.
 
 ## Objective
-To Investigate the packet capture and uncover malicious activites.
+Investigate the packet capture and uncover the malicious activity.
 
 ## Approach
-Walk through your analysis in the order you did it:
-1. **First look:**
-HTTP protocol filter and date- time method for malicious IP address
-2. **Narrowing down:** 
-http we used to filter the network  most as we was working on domain names and files shared over network.
-3. **Spotting suspicious traffic:** 
-the Zip files and Malicious IP address
-4. **Following the stream:** 
-That files are shared very preciously under the ip address and not always filters who works, sometimes u need to inspect mnaully to find like i inspect like 300 packets one by one to find different domain names.
+1. **First look:** I applied the HTTP filter and used date and time to find the malicious IP address.
+2. **Narrowing down:** I filtered mostly on HTTP, since the investigation involved domain names and files shared over the network.
+3. **Spotting suspicious traffic:** zip files and the malicious IP address stood out.
+4. **Following the stream:** filters don't always work. I inspected around 300 packets manually, one by one, to find the different domain names.
 
 ## Key Wireshark Techniques Used
-- Filters- http, dns, smtp, tcp
+- Filters: `http`, `dns`, `smtp`, `tcp`
 - Follow TCP/HTTP stream
 - Statistics menu (Conversations, Endpoints, Protocol Hierarchy)
-- Virus total
+- Supporting tool: VirusTotal, to check suspicious IPs and files
 
 ## Where I Got Stuck
-there was a question about post infected traffic which was very tough to find it took so much time and also there where points when i was lost so yes it was difficult but exciting at same point.
+The question about post-infection traffic was the hardest. It took a long time, and at points I felt lost. It was difficult, but exciting.
 
+## What I Learned
+- Filters get you started, but some findings only come from manual packet inspection.
+- Analysing a capture means following how an infection progresses, not just spotting one bad packet.
+- Wireshark combined with an outside tool like VirusTotal makes an investigation much faster.
+
+## Resources
+- TryHackMe: Carnage room
+- Video walkthrough I referred to: https://youtu.be/W-GWffKi-Bo
+
+---
+*Personal learning notes. Room answers and flags are intentionally not included.*
